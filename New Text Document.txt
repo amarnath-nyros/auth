@@ -1,0 +1,30 @@
+    
+def hello1
+if session[:user_id]
+
+  @user=User.find(session[:user_id])
+
+  pdf = PDF::Writer.new
+
+  pdf.select_font "Times-Roman"
+  pdf.text "Hello, Ruby.\n #{@user.fname} \n #{@user.email}", :font_size => 12, :justification => :left
+    
+  pdf.save_as("#{ @user.id}.pdf")
+      #~ render :text => params[:user].inspect and return
+
+ #~ render :action=>"list"  
+  
+end
+
+
+
+
+DEPRECATION  WARNING: ActionView::SafeBuffer is deprecated! Use ActiveSupport::Sa
+feBuffer instead. (called from local_constants at c:/ruby/lib/ruby/gems/1.8/gems
+
+
+
+
+
+// Place your application-specific JavaScript functions and classes here
+// This file is automatically included by javascript_include_tag :defaults

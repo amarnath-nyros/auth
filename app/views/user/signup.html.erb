@@ -1,0 +1,126 @@
+<html>
+<head>
+
+<%= javascript_include_tag :fckeditor %>
+<% CalendarDateSelect.format=(:db )%>
+<%= calendar_date_select_includes "default"%>
+
+</head>
+<title>Sign Up Page</title></head>
+<%= error_messages_for :user %>
+<body>
+
+
+
+<% form_for (:user,  :url => {:action => "signup"},  :html => {:multipart => true}) do|f|  %>
+
+
+
+<table width="679">
+ <tr><p>
+		<td width="176" height="48"> <strong>  
+	<label for="password">Sign Up </label></strong> </td>
+		<td width="420">&nbsp;  </td>
+ </tr>
+ 
+
+ 
+   <tr>
+ <td height="42"> <label for="login">Login Name </label></td>
+ <td> <%= f.text_field :login %></td>
+  </tr>
+  
+  <tr>
+<td height="50"><label for="email">Email</label> </td>
+ <td> <%= f.text_field :email %></td>
+</tr>
+
+  <tr> 
+<td height="47"><label for="email">Gender</label> </td>
+    <td> <%= f.radio_button :gender, "m", :checked => 'true' %>Male <%= f.radio_button :gender, "f" %> Female</td>
+  </tr>
+  <tr>
+    <td height="43">Date of birth </td>
+    <td>
+	<%= calendar_date_select :user,"dob"%> 
+	
+	<%#= calendar_date_select :user,"dob", :valid_date_check => "date.stripTime()>(new Date()).stripTime()" %> 
+	<%#= calendar_date_select_tag "e_date", nil%></td> 
+  </tr>
+  <tr>
+  
+<td height="52"><label for="password">Password: </label></td>
+ <td> <%= f.password_field :password %></td>
+</tr>
+
+<tr>
+<td height="41">
+<label for="password_confirmation">Confirm Password</label></td>
+<td>  <%= f.password_field :password_confirmation  %></td>
+<tr> <td> 
+
+</tr>
+
+<tr><td height="25">&nbsp;    </td>
+		<td>&nbsp;  </td>
+ </tr>
+<td height="32"><strong>PROFILES</strong></td>
+<td>&nbsp;</td>
+
+</tr>
+<tr>
+		<td height="40">&nbsp;    </td>
+		<td>&nbsp;  </td>
+ </tr>
+ 
+ <tr><td>
+<label for="fname">First Name</label></td>
+ <td> <%=f.text_field :fname %><br/></td>
+<tr><td height="48">
+<label for="lname">LastName</label> </td>
+ <td> <%= f.text_field :lname %></td></tr>
+
+
+<tr><td height="44">
+  <label for="image">Upload  Image</label> </td>
+ <td>   <%= f.file_field :photo %></td></tr>
+
+
+<tr>
+  <td valign="top">&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td valign="top" height="35">Address</td>
+  <td><%=  f.text_area :address  ,:cols => 24, :rows => 6 %></td>
+</tr>
+<tr>
+  <td valign="top" height="35"><label for="address"></label></td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td>Description</td>
+  <td> <%= fckeditor_textarea("user", "description", :toolbarSet =>'Easy', :width => '550', :height => '100') %></td>
+</tr>
+<tr>
+  <td height="52">&nbsp;</td>
+  <td><%=f.check_box("post")%>&nbsp; Terms And Conditions </td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+<tr><td>
+<label for="Chechkit"></label></td>
+
+  <td> <%= submit_tag 'Sign up' %> <%= link_to 'Cancel',:action => 'list' %></td>
+</tr>
+</table>
+
+
+<p>&nbsp;</p>   
+<p>&nbsp;</p>
+<% end -%>
+</body>
+
+</html>

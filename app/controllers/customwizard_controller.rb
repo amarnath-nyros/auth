@@ -1,0 +1,2 @@
+class CustomwizardController < ApplicationController
+end

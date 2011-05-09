@@ -1,0 +1,100 @@
+<html>
+<head>
+
+<title>LOGIN</title>
+<style type="text/css">
+<!--
+.style2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.style3 {font-family: Verdana, Arial, Helvetica, sans-serif}
+-->
+</style>
+</head>
+<body >
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+      <fb:like></fb:like>
+
+ <p>       <td>&nbsp;</td>     </p>
+ 
+  <fieldset>
+  <p></p>
+  
+<legend class="style2">Login</legend>
+  <% form_tag({:action => 'login'},{:onSubmit => 'return formvalidation();'} ) do %>
+  <table width="462" border="0" align="center" >
+
+   
+   <tr>
+     <td>&nbsp;</td>
+     <td>&nbsp;</td>
+   </tr>
+   <tr>
+     <td>  <%=flash[:notice]%>&nbsp;</td>
+     <td>&nbsp;</td>
+   </tr>
+ 
+   <tr>
+		<td>&nbsp;    </td>
+		<td>&nbsp;  </td>
+ </tr>
+ 
+    <tr>
+		<td><span class="style3">
+		  <label for="password"><strong>Login</strong> :</label>
+		  </span> </td>
+		<td> <%= text_field_tag 'login' %> </td>
+ </tr>
+
+     <tr>
+		<td><span class="style3">
+		  <label for="password"><strong>Password</strong> :</label>
+		  </span> </td>
+		<td> <%= password_field_tag 'password' %> </td>
+ </tr>
+
+   <tr>
+		<td><%= t(:'hi vijay') %>&nbsp;   </td>
+		<td> <%= submit_tag 'Log in' %> </td>
+ </tr>
+
+
+  
+ 
+
+
+<div align="center">
+  <!-- Uncomment this if you want this functionality
+<p><label for="remember_me">Remember me:</label>
+<%#= check_box_tag 'remember_me' %></p>
+-->
+</div>
+</table>
+  <p align="center"><%= link_to "Forgot password", :action=>"forgot_password"  %>  </p>
+  <p align="center">&nbsp;</p>
+  <p align="center">&nbsp;</p>
+  </fieldset>
+
+
+<iframe src="http://www.facebook.com/plugins/like.php?href=YOUR_URL"
+        scrolling="no" frameborder="0"
+        style="border:none; width:450px; height:80px"><iframe>
+
+
+<iframe src="http://www.facebook.com/plugins/like.php?href&amp;layout=box_count&amp;show_faces=false&amp;width=4&amp;action=like&amp;font=trebuchet+ms&amp;colorscheme=light&amp;height=65" scrolling="no" frameborder="20" style="border:none; overflow:hidden; width:4px; height:65px;" allowTransparency="true"><iframe>
+
+
+
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>
+    <% end -%>
+</p>
+
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,54 @@
+
+
+
+  <p><%= flash[:notice] %></p>
+
+  <p><%= flash[:message]%>  </p>
+  <% form_for :user, :url => { :action => "list"} do  %>
+  
+  </br> <%=select_tag ("records", "<option>Select number of records</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option>", :onchange => "this.form.submit()") %>
+	
+<%end%>
+<table width="660" border="0">
+    <tr> </br><td colspan="4"> <p>SEARCH &nbsp;&nbsp;<%= submit_tag "Submit"   %> 
+	<%= link_to 'Export',:action => 'exportable',id=>@user_id %> 
+    </p>
+      </p> 
+        <p>&nbsp;</p></td> </tr>
+<%= text_field_tag('user[login]','',:onkeyup =>remote_function(:url =>{:controller => :user, :action =>:search},
+      :update => 'listresult', :with=> "'val=' + this.value")) ;%>
+
+    <tr>
+      <td width="413">&nbsp;<strong  >List Of Users</strong></td>
+	   <td width="87"><span class="style5"></span></td>
+      <td width="126"><span class="style5"></span></td>
+    </tr>
+</table>
+
+	
+<div id="listresult"> <%=flash.now[:message1]%>
+<%= render :partial => "search" %></div>
+<div><% form_for :user, :url=>{:controller=>"user",:action=>"csv_import",id=>@user_id }, :html => { :multipart => true } do |f| -%>
+  <tr>
+     <td>
+      <label for="user_file">
+        Select a CSV File :
+      </label>
+     </td>
+     <td >
+       <%= f.file_field :file -%>
+     </td>
+  </tr>
+   <tr>
+     <td colspan='2'>
+       <%= submit_tag 'Submit' -%>
+     </td>
+   </tr>
+ </table>
+
+
+
+</div>
+
+
+<% end -%>

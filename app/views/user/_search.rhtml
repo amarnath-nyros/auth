@@ -1,0 +1,54 @@
+<div id="listresult">
+	
+<table border="0" width="630"  >  
+
+	<% if !@users.blank? %>
+<thead>
+<tr>
+  <td width="40">S.no</td>
+   <td width="116">Login</td>
+  <td width="116">Gender</td>
+  <td width="168">Email</td>
+  <td width="168"> Actions</td>
+  <thead>  
+  
+
+  <% i=5*(params[:page].to_i - 1) %> 
+   <% i=0 if i<0 %>
+   
+    <% @users.each do |@user| %>
+    <%i=i+1 %>
+	<tr>
+	<td><%= i  %></td>
+<td><%= @user.login%></td>
+	
+	<td><% if @user.gender == "m" %>
+	     male
+		 <% elsif @user.gender == "f" %>
+		 female
+		 
+		
+		 <% end %>
+	</td>
+    
+	
+	
+	<td><%= @user.email%></td>
+    <td><%= link_to "show",:controller=>"user", :action => "show" ,:id =>@user.permalink %> <%= link_to "Edit", :action=>"edit" , :id=> @user.id %></td>
+	
+  <%end%></tr>
+  
+  
+   <div align="center"><%= will_paginate @users %>
+</div>
+  <% else %>
+
+No Records found
+
+
+<% end %>
+  </table>
+  
+  </div>
+  
+  </div>

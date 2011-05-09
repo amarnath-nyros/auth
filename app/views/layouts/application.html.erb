@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head >
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>Simple Website</title>
+
+  <%= stylesheet_link_tag 'hh' %>
+  
+ <%= javascript_include_tag 'prototype'%>
+
+
+
+</head>
+
+<body>
+<div align="justify" style="background-color:#94A8BC;height:100px;">
+ 
+  <p align="center"><strong><center>
+    SIMPLE WEBSITE
+  </center></strong></p>
+  <p><ul class="gallery">
+ 
+	 
+	   <% if !session[:user_id].blank? %>
+	    <li><%= link_to "My Profile" ,:controller => 'user',:action => 'show', :id => @finduser.permalink %></li>
+	   <li><%= link_to " Edit My Profile" ,:controller => 'user' ,:action => 'edit',:val => @finduser.permalink ,:id => session[:user_id] %> </li>
+	   
+
+	  
+	    <%#= link_to "Delete My Profile" ,:controller => 'user',:action => 'delete',:id => @user_id %>
+	    	 <li>	<%= link_to "Logout",:controller=>"user", :action => "logout" %></li>
+		<% else %>
+
+   <li><%= link_to "Login",:controller=>"user", :action => "login" %> </li>
+   <li><%= link_to "Home",:controller=>"user", :action => "list" %></li>
+   <li><%= link_to "Signup",:controller=>"user", :action=>"signup"  %></li>
+  <% end %>
+	 </ul>&nbsp;</p>
+</div>
+
+  <div align="justify" style="background-color:#CCCCCC"> <%=yield %>
+    <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</div>
+<div align="justify"  style="background-color:#B7B7CA"  >
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+
+</div>
+<p></p>
+</body>
+</html>
+<%= click_to_globalize -%>

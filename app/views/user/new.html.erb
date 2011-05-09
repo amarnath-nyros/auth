@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Registration Form</title>
+
+<body bgcolor="#FFFFFF">
+<%= error_messages_for :user %>
+<table height="411" width="459" >
+
+  <tr>
+    <td height="60" width="217"><p><strong>REGISTRATION FORM </strong></p></td>
+    <td width="233">&nbsp;</td>
+    <td colspan="2" rowspan="8" width="10">&nbsp;</td>
+  </tr>
+  <tr><% form_for (:validation,  :url => {:action => "create"},  :html => {:multipart => true}) do  %>
+    <td>First Name</td>
+    <td>:<%= text_field :user,:fname,:size=>15 %> <%= (error_message_on :user, :fname)%></td>
+  </tr>
+  <tr>
+    <td>Last Name</td>
+    <td>:<%= text_field :user,:lname,:size=>15 %> <%= (error_message_on :user, :lname)%></td>
+  </tr>
+  <tr>
+    <td> Password</td>
+    <td>:<%= password_field( :user,:password,:size=>15) %> <%= (error_message_on :user, :password)%></td>
+  </tr>
+  <tr>
+    <td>ConfirmPassword</td>
+    <td>:<%=  password_field(:user, :password_confirmation, :size => 15) %> <%= error_message_on :user, :password_confirmation %></td>
+  </tr>
+    <tr>
+<td>Upload Image</td>
+    <td>:<%= file_field :user, :photo %> <%= (error_message_on :user, :photo)%></td>
+  </tr>
+
+  <tr>
+    <td>Email</td>
+    <td>:<%= text_field :user,:email,:size=>15 %> <%= (error_message_on :user, :email)%></td>
+  </tr>
+  <tr>
+    <td>Address</td>
+    <td> :<%= text_area :user,:address,:cols => 18, :rows => 4 %> <%= (error_message_on :user, :address)%> </td>
+  </tr>
+  <tr>
+    <td height="59"><%= submit_tag "Create"  %> </td>
+   
+  </tr>
+</table>
+<p>
+  <% end %>
+</p>
+</body>
+</html>

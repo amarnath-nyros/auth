@@ -1,0 +1,65 @@
+<html>
+ 
+ <head>
+ <%= javascript_include_tag :fckeditor %>
+ </head>
+ 
+ <body>
+ 
+ <% form_for :user, :url =>{ :action => "update",:id =>@user.permalink }, :html => { :multipart => true } do  %>
+  
+
+</p><title>EDIT PROFILE</title>
+<p>EDIT PROFILE </p>
+
+<p>
+  <label for="user"></label>
+</p>
+
+<p align="right">&nbsp;</p>
+<table width="100%" border="0">
+  <tr>
+    <th width="8%" scope="col"><label for="user">
+      <div >FirstName </div>
+    </label></th>
+    <th width="5%" scope="col"><div align="left">:<%= text_field 'user', 'fname' %></div></th>
+    <th width="87%" scope="col">&nbsp;</th>
+  </tr>
+  <tr>
+    <th scope="row"><div >Last Name</div></th>
+    <td>:<%= text_field 'user', 'lname' %></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row"><div >Email Id</div></th>
+    <td> :<%= text_field 'user', 'email' %></td>
+    
+   <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th height="21"  valign="top"><div >Adress </div></th>
+    <td><%= text_area('user',:address,:cols => 25, :rows => 6)%> </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th height="21"  valign="top"><div >Description</div></th>
+    <td><%= fckeditor_textarea('user',:description,:toolbarSet =>'Easy', :width => '550', :height => '100')%> </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th height="21" scope="row"><%#= file_column_field "user", 'filename' %>&nbsp;</th>
+    <td>&nbsp;</td>
+    <td><div align="left"><%= image_tag @user.photo.url(:smalls)%> <%= file_field :user, :photo %></div></td>
+  </tr>
+</table>
+<p align="JUSTIFY">&nbsp;</p>
+
+ <p>  <%= submit_tag "update"%></p>
+  
+  
+  <%end%>
+  
+  
+</p>
+</body>
+</html>

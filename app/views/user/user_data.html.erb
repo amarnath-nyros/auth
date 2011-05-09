@@ -1,0 +1,22 @@
+  <div class="feeds">
+    <h3>
+      <a href="<%= h @feed.link %>">
+      <%=  @feed.href %></a>    </h3>
+    <h3><%= @feed.title %></a>
+    </h3>
+    <p><%= @feed.description %></p>
+    <p><h3>items</h3></p>
+    <p>
+      <% for feed in @feed.items %>
+  <div class="feed_item">
+        <h4>
+          <a href="<%= h feed.link %>">
+          <%= feed.title %></a>
+        </h4>
+    <p><%= feed.description %></p>
+  </div>
+      <p>
+        <% end %>
+      </p>
+   
+</div>
